@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Webji - Device Orientation API Client</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    window.addEventListener( "deviceorientation", function(e) {
+      // beta = y
+      // gamma = x
+      var output = "<h3>Orientation</h3>" +
+                   "<p>Gamma: " + Math.round( e.gamma ) + "</p>" +
+                   "<p>Beta: "  + Math.round( e.beta  ) + "</p>";
+
+      document.getElementById( "output" ).innerHTML = output;
+
+      var SCALE = 10,
+          x = Math.round( e.gamma ) / SCALE,
+          y = Math.round( -e.beta ) / SCALE;
+      $.get( "http://webji.heroku.com/input?x=" + x + "&y=" + y );
+    });
+  });
+  </script>
+  <style type="text/css">
+    #output {
+      margin: 5rem auto;
+      width: 8rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="output">Device Orientation API not supported on this browser, sorry!</div>
+</body>
+</html>
