@@ -35,6 +35,6 @@ Alternatively, you could just curl input into the server this way:
 
 And "NEW FOR 2014!!!" here's an implementation of the client that works in browsers that support Device Orientation events:
 
-[https://rawgithub.com/randallagordon/webji/master/public/client.html](https://rawgithub.com/randallagordon/webji/master/public/client.html)
+[http://webji.heroku.com/client.html](http://webji.heroku.comk/client.html)
 
 Note, I've only tried this in Android Chrome and there may be variences in how some browsers return the orientation data.
