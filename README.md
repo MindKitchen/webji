@@ -33,6 +33,6 @@ Alternatively, you could just curl input into the server this way:
 
 	curl "http://webji.heroku.com/input?x=123&y=123"
 
-And "NEW FOR 2014!!!", here's an implementation of the client that works in browsers that support Device Orientation events:
+And "NEW FOR 2014!!!" here's an implementation of the client that works in browsers that support Device Orientation events:
 
 [https://rawgithub.com/randallagordon/webji/master/public/client.html](https://rawgithub.com/randallagordon/webji/master/public/client.html)

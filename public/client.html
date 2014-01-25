@@ -8,18 +8,17 @@
   <script type="text/javascript">
   $(function() {
     window.addEventListener( "deviceorientation", function(e) {
-      // beta = y
-      // gamma = x
+      var SCALE = 10,
+          x = Math.round( e.gamma ) / SCALE,
+          y = Math.round( -e.beta ) / SCALE;
+
+      $.get( "http://webji.heroku.com/input?x=" + x + "&y=" + y );
+
       var output = "<h3>Orientation</h3>" +
                    "<p>Gamma: " + Math.round( e.gamma ) + "</p>" +
                    "<p>Beta: "  + Math.round( e.beta  ) + "</p>";
 
       document.getElementById( "output" ).innerHTML = output;
-
-      var SCALE = 10,
-          x = Math.round( e.gamma ) / SCALE,
-          y = Math.round( -e.beta ) / SCALE;
-      $.get( "http://webji.heroku.com/input?x=" + x + "&y=" + y );
     });
   });
   </script>
