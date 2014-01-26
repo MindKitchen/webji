@@ -15,9 +15,9 @@ $(function() {
     if( outputEl ) { outputEl.innerHTML = output; }
   });
 
-  if (hasOrientation) {
-    setInterval(function () {
+  setInterval(function () {
+    if (hasOrientation) {
       $.get( "/input?x=" + gyroX + "&y=" + gyroY );
-    }, 250); // Update every 250ms
-  }
+    }
+  }, 250); // Update every 250ms
 });

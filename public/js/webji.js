@@ -25,10 +25,10 @@ var updateDOM = function (pos) {
 };
 
 $(function () {
-  $("#board").onload = function () {
+  $("#board").on("load", function () {
     actualSize = { w: $("#board").width(), h: $("#board").height() };
     resizePlanchette(fullSize, actualSize);
-  };
+  });
 
   $(window).resize(function () {
     actualSize = { w: $("#board").width(), h: $("#board").height() };
