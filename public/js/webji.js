@@ -27,7 +27,7 @@ var updateDOM = function (pos) {
 $(function () {
   setInterval(function () {
     updatePosition();
-    //updateDOM(scalePosition(pos, fullSize, actualSize));
+    updateDOM(scalePosition(pos, fullSize, actualSize));
   }, 250);
 
   actualSize = { w: $("#board").width(), h: $("#board").height() };
