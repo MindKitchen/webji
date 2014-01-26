@@ -16,7 +16,7 @@ $h = 1080 #
 $popup_w = 1280 # Size of the game board
 $popup_h = 720 #
 
-$SCALE = 20
+$SCALE = 10
 
 #
 # Routes
