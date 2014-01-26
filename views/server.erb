@@ -4,9 +4,34 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<title>Webji</title>
-		<script type="text/javascript" src="js/prototype.js"></script>
-		<script type="text/javascript" src="js/scriptaculous.js"></script>
-		<script type="text/javascript" src="js/webji.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript">
+					var pos = {
+						x: <%= $x %>,
+						y: <%= $y %>,
+					},
+					fullSize = {
+						w: <%= $w %>,
+						h: <%= $h %>,
+					},
+					actualSize = {};
+		</script>
+		<script type="text/javascript" src="/js/webji.js"></script>
+		<script type="text/javascript" src="/js/client.js"></script>
+		<style type="text/css">
+			body {
+				background: #C7A13E;
+			}
+
+			#board {
+				border-bottom: 3px solid #5A3111;
+				box-shadow: 0px 1px 4px #5A3111;
+				width: 100%;
+				height: 100%;
+			}
+
+			#planchette { width: 200px; }
+		</style>
 	</head>
 	<body style="margin:0;padding:0;">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
@@ -18,11 +43,8 @@
 			});
 		</script>
 		<div id="container" style="position:relative;overflow:hidden;">
-			<img src="img/board.png" />
-			<div id="planchette" style="position:absolute;left:<%= $x %>px;top:<%= $y %>px;"><img src="img/planchette.png" style="overflow:hidden;" /></div>
-			<div id="x" style=""><%= $x %></div>
-			<div id="y" style=""><%= $y %></div>
-			<div id="z" style=""></div>
+			<img id="board" src="img/board.png">
+			<div id="planchette" style="position:absolute;left:<%= $x %>px;top:<%= $y %>px;"><img src="img/planchette.png" style="overflow:hidden;"></div>
 		</div>
 	</body>
 </html>

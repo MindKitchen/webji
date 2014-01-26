@@ -1,10 +1,40 @@
-document.observe('dom:loaded', function() {
-	new Ajax.PeriodicalUpdater('x', '/x', { method: 'get', frequency: 0.25 });
-	new Ajax.PeriodicalUpdater('y', '/y', { method: 'get', frequency: 0.25 });
-	
-	Ajax.Responders.register({
-		onComplete: function() {
-			new Effect.Move('planchette', { x: $('x').textContent, y: $('y').textContent, mode: 'absolute' });
-  		}
-	});
+"use strict";
+
+var updatePosition = function () {
+  $.getJSON("/pos", function (newPos) {
+    pos = newPos;
+  });
+};
+
+var scalePosition = function (position, fullSize, actualSize) {
+  return {
+    x: position.x / (fullSize.w / actualSize.w),
+    y: position.y / (fullSize.h / actualSize.h),
+  };
+};
+
+var resizePlanchette = function (fullSize, actualSize) {
+  $("#planchette img").width(1 / (fullSize.w / actualSize.w) * 100 + "%");
+};
+
+var updateDOM = function (pos) {
+  $("#planchette").animate({
+    left: pos.x + "px",
+    top: pos.y + "px",
+  }, 245);
+};
+
+$(function () {
+  setInterval(function () {
+    updatePosition();
+    //updateDOM(scalePosition(pos, fullSize, actualSize));
+  }, 250);
+
+  actualSize = { w: $("#board").width(), h: $("#board").height() };
+  resizePlanchette(fullSize, actualSize);
+
+  $(window).resize(function () {
+    actualSize = { w: $("#board").width(), h: $("#board").height() };
+    resizePlanchette(fullSize, actualSize);
+  });
 });

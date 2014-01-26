@@ -22,19 +22,6 @@ Live demo:
 
 [http://webji.heroku.com/](http://webji.heroku.com/)
 
-To give it a go here are links to the Android and webOS phone apps, respectively:
-
-[http://mindkitchenmedia.com/apps/webji/webji.apk](http://mindkitchenmedia.com/apps/webji/webji.apk)  
-[http://mindkitchenmedia.com/apps/webji/webji.ipk](http://mindkitchenmedia.com/apps/webji/webji.ipk)
-
-That is, if you're inclined to trust that they're safe--I promise they are! I'll be getting the source for them rolled out onto Github soon. But I plan on redoing the webOS app with PhoneGap to simplify things before I toss it up here. Then there's only one codebase to deal with, in addition to being able to support more mobile platforms beyond webOS and Android.
-
-Alternatively, you could just curl input into the server this way:
-
-	curl "http://webji.heroku.com/input?x=123&y=123"
-
-And "NEW FOR 2014!!!" here's an implementation of the client that works in browsers that support Device Orientation events:
-
-[http://webji.heroku.com/client.html](http://webji.heroku.comk/client.html)
+Optimally, try loading the site on a TV as a display and then controlling it from a phone or tablet. The orientation data does not take screen rotation orientation into account, so it is currently assumed that you're viewing it in portrait mode on the controlling device.
 
 Note, I've only tried this in Android Chrome and there may be variences in how some browsers return the orientation data.
