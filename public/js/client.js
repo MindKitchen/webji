@@ -1,7 +1,9 @@
 $(function() {
+  var hasOrientation = false;
   var gyroX = gyroY = 0;
 
   window.addEventListener( "deviceorientation", function(e) {
+    hasOrientation = true;
     gyroX = Math.round( e.gamma ),
     gyroY = Math.round( -e.beta );
 
@@ -13,7 +15,9 @@ $(function() {
     if( outputEl ) { outputEl.innerHTML = output; }
   });
 
-  setInterval(function () {
-    $.get( "/input?x=" + gyroX + "&y=" + gyroY );
-  }, 250); // Update every 250ms
+  if (hasOrientation) {
+    setInterval(function () {
+      $.get( "/input?x=" + gyroX + "&y=" + gyroY );
+    }, 250); // Update every 250ms
+  }
 });

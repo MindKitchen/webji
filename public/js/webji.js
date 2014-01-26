@@ -25,16 +25,19 @@ var updateDOM = function (pos) {
 };
 
 $(function () {
-  setInterval(function () {
-    updatePosition();
-    updateDOM(scalePosition(pos, fullSize, actualSize));
-  }, 250);
-
-  actualSize = { w: $("#board").width(), h: $("#board").height() };
-  resizePlanchette(fullSize, actualSize);
+  $("#board").onload = function () {
+    actualSize = { w: $("#board").width(), h: $("#board").height() };
+    resizePlanchette(fullSize, actualSize);
+  };
 
   $(window).resize(function () {
     actualSize = { w: $("#board").width(), h: $("#board").height() };
     resizePlanchette(fullSize, actualSize);
   });
+
+  setInterval(function () {
+    updatePosition();
+    updateDOM(scalePosition(pos, fullSize, actualSize));
+  }, 250);
+
 });
