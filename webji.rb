@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'json'
 
-set server: 'thin'
+set :server, 'thin'
 
 #
 # Globetacularly Persistant Variables
