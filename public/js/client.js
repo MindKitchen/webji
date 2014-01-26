@@ -2,8 +2,8 @@ $(function() {
   var gyroX = gyroY = 0;
 
   window.addEventListener( "deviceorientation", function(e) {
-    dox = Math.round( e.gamma ),
-    doy = Math.round( -e.beta );
+    gyroX = Math.round( e.gamma ),
+    gyroY = Math.round( -e.beta );
 
     var output = "<h3>Orientation</h3>" +
                  "<p>Gamma: " + Math.round( e.gamma ) + "</p>" +
