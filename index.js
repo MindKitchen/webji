@@ -8,7 +8,7 @@ var webji = new Webji();
 var Hapi = require("hapi");
 var Joi = require("joi");
 
-var server = new Hapi.Server(8080,
+var server = new Hapi.Server(4567,
   {
     views: {
       engines: {
@@ -40,7 +40,7 @@ server.route([
     method: "GET",
     path: "/pos",
     handler: function (request, reply) {
-      reply(webji.position);
+      reply(webji.offsetPosition());
     },
   },
   {
