@@ -1,0 +1,31 @@
+{
+  "name": "webji",
+  "version": "0.0.0",
+  "description": "Multiplayer ouija board controlled with accelerometer data over WebSockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/lab/bin/lab -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mindkitchen/webji.git"
+  },
+  "keywords": [
+    "ouija",
+    "websockets"
+  ],
+  "author": "Randall A. Gordon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mindkitchen/webji/issues"
+  },
+  "homepage": "https://github.com/mindkitchen/webji",
+  "dependencies": {
+    "joi": "^4.6.1",
+    "hapi": "^6.2.0",
+    "handlebars": "^2.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "lab": "^3.2.1"
+  }
+}
