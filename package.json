@@ -1,10 +1,12 @@
 {
   "name": "webji",
   "version": "0.0.0",
-  "description": "Multiplayer ouija board controlled with accelerometer data over WebSockets",
+  "description": "Multiplayer ouija board controlled via accelerometer data over WebSockets",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/lab/bin/lab -c"
+    "start": "node index.js",
+    "test": "./node_modules/lab/bin/lab -c",
+    "build-js": "browserify browser/main.js > public/js/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,11 @@
   "dependencies": {
     "joi": "^4.6.1",
     "hapi": "^6.2.0",
-    "handlebars": "^2.0.0-alpha.4"
+    "handlebars": "^2.0.0-alpha.4",
+    "shoe": "0.0.15",
+    "domready": "^1.0.5",
+    "through": "^2.3.4",
+    "reconnect": "^2.0.1"
   },
   "devDependencies": {
     "lab": "^3.2.1"
