@@ -1,6 +1,6 @@
 {
   "name": "webji",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Multiplayer ouija board controlled via accelerometer data over WebSockets",
   "main": "index.js",
   "scripts": {
