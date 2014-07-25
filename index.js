@@ -14,7 +14,10 @@ var through = require("through");
 // Websocket handling
 var sock = shoe(function (stream) {
   var pulse = setInterval(function () {
-    stream.write(JSON.stringify(webji.offsetPosition()));
+    stream.write(JSON.stringify({
+      position: webji.offsetPosition(),
+      numClients: clients.length
+    }));
   }, 250);
 
   stream.on("end", function () {

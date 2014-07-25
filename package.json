@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "./node_modules/lab/bin/lab -c",
-    "build-js": "browserify browser/main.js > public/js/bundle.js"
+    "build-js": "browserify browser/main.js | uglifyjs -mc > public/js/bundle.js",
+    "watch-js": "watchify browser/main.js -o public/js/bundle.js -dv"
   },
   "repository": {
     "type": "git",

@@ -5,10 +5,11 @@ var through = require("through");
 var reconnect = require("reconnect/shoe");
 
 reconnect(function (stream) {
-  stream.pipe(through(function (pos) {
-    var newPosition = JSON.parse(pos);
+  stream.pipe(through(function (data) {
+    var data = JSON.parse(data);
 
-    updateDOM(scalePosition(newPosition, fullSize, actualSize));
+    movePlanchette(scalePosition(data.position, fullSize, actualSize));
+    $("#numClients").text("Others: " + data.numClients);
   }));
 
   window.addEventListener("deviceorientation", function(e) {
@@ -29,7 +30,7 @@ var scalePosition = function (position, fullSize, actualSize) {
   };
 };
 
-var updateDOM = function (pos) {
+var movePlanchette = function (pos) {
   $("#planchette").animate({
     left: pos.x + "px",
     top: pos.y + "px",
