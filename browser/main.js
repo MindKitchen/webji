@@ -46,6 +46,8 @@ domready(function () {
     resizePlanchette(fullSize, actualSize);
   };
 
+  // Bind to events and run once for initialization
   $("#board").on("load", sizer);
   $(window).resize(sizer);
+  sizer();
 });

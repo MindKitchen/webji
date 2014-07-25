@@ -47,8 +47,10 @@ domready(function () {
     resizePlanchette(fullSize, actualSize);
   };
 
+  // Bind to events and run once for initialization
   $("#board").on("load", sizer);
   $(window).resize(sizer);
+  sizer();
 });
 
 },{"domready":2,"reconnect/shoe":11,"through":14}],2:[function(require,module,exports){
