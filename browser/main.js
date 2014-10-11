@@ -1,10 +1,17 @@
-/* global actualSize, fullSize */
+/* global alert, actualSize, fullSize */
 "use strict";
 
 var domready = require("domready");
 var screenfull = require("screenfull");
 var through = require("through");
 var reconnect = require("reconnect/shoe");
+
+var orientationPrefix = 'orientation' in screen ? '' :
+                        'mozOrientation' in screen ? 'moz' :
+                        'msOrientation' in screen ? 'ms' :
+                        null;
+
+var orientationProperty = orientationPrefix + (orientationPrefix === '' ? 'o' : 'O') + 'rientation';
 
 reconnect(function (stream) {
   stream.pipe(through(function (data) {
@@ -56,11 +63,32 @@ var goFullscreen = function () {
       document.removeEventListener("click", goFullscreen);
       document.addEventListener("click", exitFullscreen);
 
-      screen.orientation.lock("landscape-primary");
+      if(screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape-primary");
+      } else {
+        var lockOrientation = orientationPrefix + (orientationPrefix === "" ? "l" : "L") + "ockOrientation";
+        screen[lockOrientation]("landscape-primary");
+      }
+
     };
     document.addEventListener(screenfull.raw.fullscreenchange, handleFullscreen);
 
     screenfull.request();
+  }
+};
+
+var handleOrientation = function () {
+  if (orientationPrefix === null) {
+    $("#rotate-notice").hide();
+    alert("Please hold your device in landscape orientation and lock your screen.");
+  } else {
+    var currentOrientation = (screen.orientation) ? screen.orientation.type : screen[orientationProperty];
+
+    if (currentOrientation !== "landscape-primary") {
+      $("#rotate-notice").show();
+    } else {
+      $("#rotate-notice").hide();
+    }
   }
 };
 
@@ -79,19 +107,14 @@ domready(function () {
   $(window).resize(sizer);
   sizer();
 
-  // Handle device orientation
-  var handleOrientation = function () {
-    if (screen.orientation && screen.orientation.type !== "landscape-primary") {
-      $("#rotate-notice").show();
+  // Listen for device orientation changes
+  if(orientationPrefix !== null) {
+    if (screen.addEventListener) {
+      screen.addEventListener(orientationPrefix + "orientationchange", handleOrientation);
     } else {
-      $("#rotate-notice").hide();
+      screen.orientation.addEventListener("change", handleOrientation);
     }
-  };
-
-  if(screen.orientation) {
-    screen.orientation.addEventListener("change", handleOrientation);
   }
-
   handleOrientation();
 
   // Listen for clicks to go fullscreen and lock orientation
