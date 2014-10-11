@@ -16,8 +16,9 @@
 					actualSize = {};
 		</script>
     <link href="http://fonts.googleapis.com/css?family=Orbitron:500" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<style type="text/css">
-			body {
+			html {
 				background: #C7A13E;
 			}
 
@@ -51,6 +52,53 @@
 			}
 
 			#planchette { width: 200px; }
+
+      #rotate-notice {
+        background: rgba(0, 0, 0, 0.75);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        font-size: 2em;
+        padding-top: 3rem;
+      }
+
+      .fa-rotatedevice {
+        -webkit-animation: fa-rotatedevice 2s infinite linear;
+                animation: fa-rotatedevice 2s infinite linear;
+      }
+
+      @-webkit-keyframes fa-rotatedevice {
+        0% {
+            -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+        }
+        25% {
+            -webkit-transform: rotate(-90deg);
+                    transform: rotate(-90deg);
+        }
+        100% {
+            -webkit-transform: rotate(-90deg);
+                    transform: rotate(-90deg);
+        }
+      }
+
+      @keyframes fa-rotatedevice {
+        0% {
+            -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+        }
+        25% {
+            -webkit-transform: rotate(-90deg);
+                    transform: rotate(-90deg);
+        }
+        100% {
+            -webkit-transform: rotate(-90deg);
+                    transform: rotate(-90deg);
+        }
+      }
 		</style>
 	</head>
 	<body style="margin:0;padding:0;">
@@ -61,6 +109,12 @@
     <footer>
       <div id="numClients"></div>
       <div class="attribution"><a href="http://oven.mndktchn.com/">Made by MNDKTCHN</a></div>
+
+      <div id="rotate-notice">
+        <i class="fa fa-5x fa-mobile fa-rotatedevice"></i>
+        <p>Rotate your device</p>
+        <p>Tap to lock screen</p>
+      </div>
     </footer>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
